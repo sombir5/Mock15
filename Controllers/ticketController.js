@@ -16,7 +16,7 @@ const getTicket = async (req, res) => {
   // console.log(user);
   try {
     if (userId) {
-      let tickets = await Ticket.find({ userIdId }).sort({
+      let tickets = await Ticket.find({ userId }).sort({
         createdAt: sort,
       }).populate("user");
       return res.status(200).send({ tickets });
