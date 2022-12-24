@@ -18,12 +18,12 @@ const getTicket = async (req, res) => {
     if (userId) {
       let tickets = await Ticket.find({ userId }).sort({
         createdAt: sort,
-      }).populate("user");
+      }).populate("userId");
       return res.status(200).send({ tickets });
     } else if (category && userId) {
       let tickets = await Ticket.find({ userId: userId, category: category }).sort({
         createdAt: sort,
-      }).populate("user");
+      }).populate("userId");
       return res.status(200).send({ tickets });
     }
     // else {

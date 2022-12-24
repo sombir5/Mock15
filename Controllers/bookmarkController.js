@@ -17,7 +17,7 @@ const getBookmark = async (req, res) => {
     const {userId,ticket} =req.query
   try {
     let bookmarks = await Bookmark.find({ userId:userId, ticket:ticket }).populate([
-      "user",
+      "userId",
       "ticket",
     ]);
     return res
