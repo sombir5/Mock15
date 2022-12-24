@@ -12,16 +12,16 @@ const createTicket = async (req, res) => {
   }
 };
 const getTicket = async (req, res) => {
-  const { user, category, sort = -1 } = req.query;
-  console.log(user);
+  const { userId, category, sort = -1 } = req.query;
+  // console.log(user);
   try {
-    if (user) {
-      let tickets = await Ticket.find({ user: user }).sort({
+    if (userId) {
+      let tickets = await Ticket.find({ userIdId }).sort({
         createdAt: sort,
       }).populate("user");
       return res.status(200).send({ tickets });
-    } else if (category && user) {
-      let tickets = await Ticket.find({ user: user, category: category }).sort({
+    } else if (category && userId) {
+      let tickets = await Ticket.find({ userId: userId, category: category }).sort({
         createdAt: sort,
       }).populate("user");
       return res.status(200).send({ tickets });
